@@ -4,59 +4,54 @@ import java.util.Scanner;
 
 */
 public class Parabola{
+	
 
-	static double a;
-	static double b;
-	static double c;
-	static double delta;
-
-	static boolean teste(Double valor){
-		// Este método recebe um valor e responde se ele pertence aos Reais positivos(incluindo o zero) ou não
-		if (valor >= 0) return true;
-		return false;
-	}
-
-	static void InValor(){
+	static Function inValor(){
 		/*
 		Este método recebe os valores de a,b e c por input
 		e os substitui nas variáveis globais
 		*/
+		Function parabola = new Function();
+
 		try {
 		Scanner input = new Scanner (System.in);
 		System.out.print("\nDigite o valor de a: ");
-		a = input.nextDouble();
+		parabola.a = input.nextDouble();
 		System.out.print("Digite o valor de b: ");
-		b = input.nextDouble();
+		parabola.b = input.nextDouble();
 		System.out.print("Digite o valor de c: ");
-		c = input.nextDouble();
+		parabola.c = input.nextDouble();
+		parabola.delta=Function.delta(parabola.a, parabola.b, parabola.c);
+		return parabola;
 		}catch (Exception e) {
 			System.out.println("um ou mais Valores nao aceitos");
-			InValor();}
+			return inValor();}
 
 	} 
 
-	static double[] raízes(){
+	static double[] raízes(Function parabola){
+
+
 		//Este método recebe os valores da função, cálcula as raízes e as retorna 
 		double[] raiz= new double[3];
-		if (teste(delta)){
-			System.out.println(teste(delta));
+		if (parabola.delta>=0){
 			raiz[0] = 1;
-			raiz[1] = (0 - Math.sqrt(delta) - b) /(2*a);
-			raiz[2] = (Math.sqrt(delta) - b) /(2*a);
+			raiz[1] = (0 - Math.sqrt(parabola.delta) - parabola.b) /(2*parabola.a);
+			raiz[2] = (Math.sqrt(parabola.delta) - parabola.b) /(2*parabola.a);
 			return raiz;}
 		raiz [0] = 0;
-		raiz[1] = (0 - b)/(2*a);
-		raiz[2] = Math.sqrt(0-delta)/(2*a);
+		raiz[1] = (0 - parabola.b)/(2*parabola.a);
+		raiz[2] = Math.sqrt(0-parabola.delta)/(2*parabola.a);
 		return raiz;
 
 
 	}
 
-	static double[] vertice(){
+	static double[] vertice(Function parabola){
 		//Este método recebe os valores da função, cálcula o Vértice e o retorna
 		double[] vertice = new double[2];
-		vertice[0]= (0 - b) / (2*a);
-		vertice[1] = (0 - delta)/ (4*a);
+		vertice[0]= (0 - parabola.b) / (2*parabola.a);
+		vertice[1] = (0 - parabola.delta)/ (4*parabola.a);
 		return vertice;
 	}
 
@@ -75,34 +70,36 @@ public class Parabola{
 
 
 	public static void main (String[] args){
+
+		Function parabola = new Function();
+
 		// Menu para input do usuário
 		System.out.print("\nMontar parabolas \n \n");
 		System.out.print("Uma parabola e formada pelo esquema y = a*x\u00B2 +b*x+c  ");
 		
 		// Crias-se a função f(x)=ax²+bx+c
-		InValor();
-		
-		//Calcula-se Delta
-		delta = Math.pow(b,2)-4*a*c;
+		parabola = inValor();
 
 		// printa-se a função
-		System.out.printf("\nA equacao e y = %5.2f", a);
-		if (b>=0) {
-			System.out.printf("*x\u00B2 + %5.2f", b);
+		System.out.printf("\nA equacao e y = %5.2f", parabola.a);
+		if (parabola.b>=0) {
+			System.out.printf("*x\u00B2 + %5.2f", parabola.b);
 		}else {
-			System.out.printf("*x\u00B2 - %5.2f", (0 - b) );
+			System.out.printf("*x\u00B2 - %5.2f", (0 - parabola.b) );
 		}
-		if (c>=0) {
-			System.out.printf("*x + %5.2f %n", c);
+		if (parabola.c>=0) {
+			System.out.printf("*x + %5.2f %n", parabola.c);
 		}else {
-			System.out.printf("*x - %5.2f %n", (0-c));
+			System.out.printf("*x - %5.2f %n", (0-parabola.c));
 		}
+
+		System.out.printf("%5.2f %n", parabola.delta);
 		// Printa-se as raízes
-		double[] raiz = raízes();
+		double[] raiz = raízes(parabola);
 
 		printRaiz(raiz);
 		//Printa-se o vérice
-		double[] vert = vertice();
+		double[] vert = vertice(parabola);
 
 		System.out.printf("O Ponto Vertice da funcao e ( %5.2f", vert[0]);
 		System.out.printf(", %5.2f", vert[1]);
