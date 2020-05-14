@@ -1,8 +1,8 @@
 public class Raiz {
 	
 	static void teste (int n){
-		for (int i=-10; i<=n ;i++ ) {
-			double x = raizQuadrada(i,0.00000001);
+		for (int i=0; i<=n ;i++ ) {
+			double x = raizQuadrada(i,0.1);
 			double resp = Math.sqrt(i);
 			System.out.println("************");
 			System.out.println("Testando para: "+ i);
@@ -28,9 +28,9 @@ public class Raiz {
 	}
 
 	public static void main(String[] args) {
-		//teste(20);
-		double resp = raizQuadrada(10,0.1);
-		System.out.println(resp);
+		teste(100);
+		//double resp = raizQuadrada(0,0.1);
+		//System.out.println(resp);
 	}
 
 }
