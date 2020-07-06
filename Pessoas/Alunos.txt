@@ -1,0 +1,24 @@
+
+Nome: Aluno 
+Cargo: Duda 
+Curso: sistema da Informacao 
+Ano: 2020 
+Professor: Norton 
+
+Nome: Aluno 
+Cargo: Frodo 
+Curso: sistema da Informacao 
+Ano: 2020 
+Professor: Digimon 
+
+Nome: Aluno 
+Cargo: Ramon 
+Curso: sistema da Informacao 
+Ano: 2020 
+Professor: Claudinha 
+
+Nome: Aluno 
+Cargo: gabriel 
+Curso: sistema da Informacao 
+Ano: 2019 
+Professor: Ester 

@@ -5,7 +5,7 @@ class Parabola{
 	static double b;
 	static double c;
 	static double delta;
-	static String parabola;
+	static String referenciaEmTexto;
 	static Raiz raiz;
 	static Vert vert;
 	static Pontos points;
@@ -20,7 +20,7 @@ class Parabola{
 		this.delta= delta(a,b,c);
 		raiz = new Raiz(this);
 		vert = new Vert(this);
-		parabola = String.format("Y = %5.2f*x² + %5.2f*x + %5.2f",a, b, c);
+		referenciaEmTexto = String.format("Y = %5.2f*x² + %5.2f*x + %5.2f",a, b, c);
 
 
 	}
@@ -32,15 +32,15 @@ class Parabola{
 
 	static void print(){
 		//printa-se a parabola
-		System.out.println(parabola+"\n")
+		System.out.println(referenciaEmTexto+"\n")
 	}
 
-	static void execute(Parabola parabola){
+	static void execute(){
 
 		Scanner input = new Scanner(System.in);
 		
 		//printa-se a parabola, raizes e vértica
-		parabola.print();
+		this.print();
 		raiz.print();
 		vert.print();
 
@@ -48,7 +48,7 @@ class Parabola{
 		System.out.println("Deseja imprimir os principais pontos?(S/n) ");
 		String resp1 = input.next();
 		if (resp1.equals("s") || resp1.equals("")){
-			points = new Pontos(parabola, raiz);
+			points = new Pontos(this, raiz);
 			points.print();
 		}
 		
@@ -56,14 +56,14 @@ class Parabola{
 		System.out.println("Deseja calcular a derivada?(S/n) ");
 		String resp2 = input.next();
 		if (resp1.equals("s") || resp1.equals("")){
-			derivada = new Derivada(parabola);
+			derivada = new Derivada(this);
 			derivada.print();
 		}
 
 		//calcua a Tangente
 		System.out.println("Deseja calcular a reta tangente em qual ponto? ");
 		Double resp3 = input.nextDouble();
-		tangente = new Tangente(derivada,resp3,parabola);
+		tangente = new Tangente(derivada,resp3,this);
 		tangente.print();
 		
 

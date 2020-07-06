@@ -3,23 +3,26 @@ import java.util.Scanner;
 //Programa para a construção de Parabolas
 
 public class Main{
+
+	double a;
+	double b;
+	double c;
 	
 	static Scanner input = new Scanner (System.in);
 
-	static Parabola inValor(){
+	void inValor(){
 		//Este método recebe os valores de a,b e c por inpute os substitui nas variáveis globais
 		
 		try {
 		
 		System.out.print("\nDigite o valor de a, b e c (separados por espaco): ");
-		double a = input.nextDouble();
-		double b = input.nextDouble();
-		double c = input.nextDouble();
-		Parabola parabola = new Parabola(a,b,c);
-		return parabola;
+		a = input.nextDouble();
+		b = input.nextDouble();
+		c = input.nextDouble();
+		
 		}catch (Exception e) {
 			System.out.println("um ou mais Valores nao aceitos");
-			return inValor();
+			 inValor();
 		}
 	} 
 
@@ -38,8 +41,9 @@ public class Main{
 
 		// Crias-se a função f(x)=ax²+bx+c
 		for (int i = 0; i<parabolas.length; i++){
-			parabolas[i]=inValor();
-			parabolas[i].execute(parabolas[i]);
+			inValor();
+			parabolas[i]=new Parabola(a,b,c);
+			parabolas[i].execute();
 		}
 
 

@@ -8,7 +8,7 @@ class Tangente{
 		x = ponto;
 		y = parabola.a*Math.pow(x,2)+parabola.b*x+parabola.c;
 		m = derivada.a*x+derivada.b;
-		tangente = String.format("Y + %5.2f = %5.2f*x + %5.2f", y, m, -m*x);
+		tangente = String.format("Y  = %5.2f*x + %5.2f",  m, y-(m*x));
 	}
 
 	static void print(){
